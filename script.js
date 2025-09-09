@@ -12,7 +12,11 @@ async function login() {
 
     pdfs.forEach(file => {
       const li = document.createElement("li");
-      li.innerHTML = `${file} <a href="files/${file}" download>📥 Tải về</a>`;
+
+      // Tạo link gọi Supabase Function thay vì file tĩnh
+      const functionUrl = `https://bmgdjrnqjoymyoaiwhlt.functions.supabase.co/download?code=${code}&file=${encodeURIComponent(file)}`;
+
+      li.innerHTML = `${file} <a href="${functionUrl}" download>📥 Tải về</a>`;
       list.appendChild(li);
     });
 
@@ -22,31 +26,4 @@ async function login() {
   } else {
     alert("Mã không hợp lệ. Vui lòng thử lại.");
   }
-}
-
-function checkPDF() {
-  const fileInput = document.getElementById("pdfUpload");
-  const result = document.getElementById("result");
-
-  if (fileInput.files.length === 0) {
-    alert("Vui lòng chọn file PDF");
-    return;
-  }
-
-  const file = fileInput.files[0];
-  const reader = new FileReader();
-
-  reader.onload = function(e) {
-    const content = e.target.result;
-    const text = new TextDecoder().decode(content);
-    const match = text.match(/student:\d+/);
-
-    if (match) {
-      result.textContent = "✅ Mã học sinh phát hiện: " + match[0];
-    } else {
-      result.textContent = "⚠️ Không tìm thấy mã học sinh trong file.";
-    }
-  };
-
-  reader.readAsArrayBuffer(file);
 }
