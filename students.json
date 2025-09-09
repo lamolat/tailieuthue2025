@@ -1,0 +1,19 @@
+{
+  "students": [
+    {
+      "name": "Nguyễn Văn A",
+      "code": "1",
+      "role": "student"
+    },
+    {
+      "name": "Trần Thị B",
+      "code": "2",
+      "role": "student"
+    },
+    {
+      "name": "Admin",
+      "code": "0",
+      "role": "admin"
+    }
+  ]
+}
