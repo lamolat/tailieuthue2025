@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lớp học trực tuyến</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Đăng nhập lớp học</h2>
+  <input type="text" id="codeInput" placeholder="Nhập số điện thoại">
+  <button onclick="login()">Đăng nhập</button>
+
+  <div id="fileList" style="display:none;">
+    <h3>📚 Danh sách tài liệu</h3>
+    <ul id="pdfList"></ul>
+  </div>
+
+  <div id="adminTools" style="display:none; margin-top: 30px;">
+    <h3>🔍 Kiểm tra mã hóa file PDF</h3>
+    <input type="file" id="pdfUpload">
+    <button onclick="checkPDF()">Phân tích file</button>
+    <pre id="result"></pre>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
